@@ -1,0 +1,28 @@
+{
+  "name": "stock-wise",
+  "version": "1.0.0",
+  "description": "Este sistema de gerenciamento de estoque foi desenvolvido utilizando os princípios de **Domain-Driven Design (DDD)** e **Clean Architecture** para garantir uma solução modular, escalável e de fácil manutenção. O sistema permite o rastreamento individual de produtos, controle de estoque, geração de alertas, análise de vendas e integração com fornecedores.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Massaronii/stock-wise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Massaronii/stock-wise/issues"
+  },
+  "homepage": "https://github.com/Massaronii/stock-wise#readme",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "^5.8.3"
+  }
+}
