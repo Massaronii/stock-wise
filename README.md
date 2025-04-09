@@ -16,29 +16,35 @@ Este sistema de gerenciamento de estoque foi desenvolvido utilizando os princíp
    - Categoria
 
 2. **Estoque**
-   - Produto associado
+   - Identificador único (ID)
+   - Produto associado (ID)
    - Quantidade atual
    - Quantidade mínima
 
 3. **Vendas**
-   - Produto vendido
+   - Identificador único (ID)
+   - Produto vendido (ID)
    - Quantidade
    - Data da venda
    - Preço unitário
    - Total da venda
 
 4. **Compras**
-   - Produto adquirido
+   - Identificador único (ID)
+   - Produto adquirido (ID)
    - Quantidade
    - Data da compra
    - Custo unitário
+   - Custo Total
    - Fornecedor associado
 
 5. **Fornecedor**
    - Identificador único (ID)
    - Nome
-   - Contato
-   - Prazos de entrega
+   - Email
+   - Celular
+   - Endereço
+   - Prazos médios de entrega
 
 ---
 
