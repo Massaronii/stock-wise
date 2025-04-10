@@ -12,7 +12,7 @@ export class CreateSupplier {
 
     execute({ name, email, deliveryTime, address, phone }: CreateSupplierUseCaseRequest) {
 
-        const supplier = new Supplier(name, email, deliveryTime, address, phone);
+        const supplier = new Supplier({name, email, deliveryTime, address, phone});
 
         return supplier;
     }

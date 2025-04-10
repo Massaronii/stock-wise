@@ -11,7 +11,7 @@ interface CreateSalesUseCaseRequest {
 export class CreateSales {
     execute({ productId, quantity, date, priceTotal, priceUnit }: CreateSalesUseCaseRequest) {
 
-        const sales = new Sales(productId, quantity, date, priceTotal, priceUnit);
+        const sales = new Sales({productId, quantity, date, priceTotal, priceUnit});
 
         return sales;
     }

@@ -13,7 +13,7 @@ export class CreateShopping {
 
     execute({ productId, quantity, date, priceUnit, priceTotal, supplierId }: CreateShoppingUseCaseRequest) {
 
-        const shopping = new Shopping(productId, quantity, date, priceUnit, priceTotal, supplierId);
+        const shopping = new Shopping({productId, quantity, date, priceUnit, priceTotal, supplierId});
 
         return shopping;
     }

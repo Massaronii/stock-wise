@@ -1,5 +1,13 @@
 import { randomUUID } from "node:crypto";
 
+interface SupplierProps {
+    name: string;
+    email: string;
+    deliveryTime: string;
+    address: string;
+    phone: string;
+}
+
 export class Supplier {
     public id: string;
     public name: string;
@@ -8,14 +16,12 @@ export class Supplier {
     public phone: string;
     public deliveryTime: string;
 
-    constructor(name: string, email: string, deliveryTime: string
-        , address: string, phone: string, id?: string
-    ) {
+    constructor(props: SupplierProps, id?: string) {
         this.id = id ?? randomUUID()
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        this.deliveryTime = deliveryTime;
+        this.name = props.name;
+        this.email = props.email;
+        this.address = props.address;
+        this.phone = props.phone;
+        this.deliveryTime = props.deliveryTime;
     }
 }

@@ -9,7 +9,7 @@ interface CreateStockUseCaseRequest {
 export class CreateStock {
     execute({ productId, actualyQuantity, minimumQuantity }: CreateStockUseCaseRequest) {
 
-        const stock = new Stock(productId, actualyQuantity, minimumQuantity);
+        const stock = new Stock({productId, actualyQuantity, minimumQuantity});
 
         return stock;
     }
