@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { CreateSales } from "./create-sales";
 import { Sales } from "../entities/sales";
 import { SalesRepository } from "../repositories/sales-repository";
@@ -17,8 +16,8 @@ describe("CreateSales", () => {
             productId: "product id",
             quantity: 1,
             date: new Date(),
-            priceTotal: 100,
-            priceUnit: 10
+            totalPrice: 100,
+            unitPrice: 10
         });
 
         expect(sales.productId).toEqual('product id');

@@ -1,4 +1,6 @@
-import { Entity } from "../../core/entities/entity";
+import { Entity } from "@/core/entities/entity";
+import { Optional } from "@/core/entities/types/optional";
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 interface SupplierProps {
     name: string;
@@ -6,12 +8,14 @@ interface SupplierProps {
     deliveryTime: string;
     address: string;
     phone: string;
+    createdAt: Date;
+    updatedAt?: Date;
 }
 
 export class Supplier extends Entity<SupplierProps> {
 
     get name() {
-        return this.props.name; 
+        return this.props.name;
     }
 
     get email() {
@@ -20,7 +24,7 @@ export class Supplier extends Entity<SupplierProps> {
 
     get deliveryTime() {
         return this.props.deliveryTime;
-    }   
+    }
 
     get address() {
         return this.props.address;
@@ -28,5 +32,22 @@ export class Supplier extends Entity<SupplierProps> {
 
     get phone() {
         return this.props.phone;
-    }   
+    }
+
+    get createdAt() {
+        return this.props.createdAt;
+    }
+
+    get updatedAt() {
+        return this.props.updatedAt;
+    }
+
+    static create(props: Optional<SupplierProps, 'createdAt'>, id?: UniqueEntityId) {
+        const supplier = new Supplier({
+            ...props,
+            createdAt: new Date(),
+        }, id);
+
+        return supplier;
+    }
 }

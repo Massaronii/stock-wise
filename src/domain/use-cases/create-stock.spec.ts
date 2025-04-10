@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { CreateStock } from "./create-stock";
 import { StockRepository } from "../repositories/stock-repository";
 import { Stock } from "../entities/stock";

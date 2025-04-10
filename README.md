@@ -13,6 +13,8 @@ Este sistema de gerenciamento de estoque foi desenvolvido utilizando os princíp
    - Descrição
    - Tamanho
    - Cor
+   - Valor de custo
+   - Valor de venda
    - Categoria
 
 2. **Estoque**

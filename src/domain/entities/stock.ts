@@ -1,9 +1,13 @@
-import { Entity } from "../../core/entities/entity";
+import { Entity } from "@/core/entities/entity";
+import { Optional } from "@/core/entities/types/optional";
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 interface StockProps {
-    productId: string;
+    productId: UniqueEntityId;
     actualyQuantity: number;
     minimumQuantity: number;
+    createdAt: Date;
+    updatedAt?: Date;
 }
 
 export class Stock extends Entity<StockProps> {
@@ -20,4 +24,20 @@ export class Stock extends Entity<StockProps> {
         return this.props.minimumQuantity;
     }
 
+    get createdAt() {
+        return this.props.createdAt;
+    }
+
+    get updatedAt() {
+        return this.props.updatedAt;
+    }
+
+    static create(props: Optional<StockProps, 'createdAt'>, id?: UniqueEntityId) {
+        const stock = new Stock({
+            ...props,
+            createdAt: new Date(),
+        }, id);
+
+        return stock;
+    }
 }
