@@ -1,15 +1,23 @@
-import { randomUUID } from "node:crypto";
+import { Entity } from "../../core/entities/entity";
 
-export class Stock {
-    public id: string;
-    public productId: string;
-    public actualyQuantity: number;
-    public minimumQuantity: number;
+interface StockProps {
+    productId: string;
+    actualyQuantity: number;
+    minimumQuantity: number;
+}
 
-    constructor(productId: string, actualyQuantity: number, minimumQuantity: number, id?: string, ) {
-        this.id = id ?? randomUUID()
-        this.productId = productId;
-        this.actualyQuantity = actualyQuantity;
-        this.minimumQuantity = minimumQuantity;
+export class Stock extends Entity<StockProps> {
+
+    get productId() {
+        return this.props.productId;
     }
+
+    get actualyQuantity() {
+        return this.props.actualyQuantity;
+    }       
+
+    get minimumQuantity() {
+        return this.props.minimumQuantity;
+    }
+
 }
