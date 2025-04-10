@@ -1,4 +1,5 @@
 import { Stock } from "../entities/stock";
+import { StockRepository } from "../repositories/stock-repository";
 
 interface CreateStockUseCaseRequest {
     productId: string;
@@ -7,9 +8,14 @@ interface CreateStockUseCaseRequest {
 }
 
 export class CreateStock {
-    execute({ productId, actualyQuantity, minimumQuantity }: CreateStockUseCaseRequest) {
+
+    constructor(private stockRepository: StockRepository) { }
+
+   async  execute({ productId, actualyQuantity, minimumQuantity }: CreateStockUseCaseRequest) {
 
         const stock = new Stock({productId, actualyQuantity, minimumQuantity});
+
+        await this.stockRepository.create(stock);
 
         return stock;
     }

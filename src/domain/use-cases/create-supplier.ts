@@ -1,4 +1,5 @@
 import { Supplier } from "../entities/supplier";
+import { SupplierRepository } from "../repositories/supplier-repository";
 
 interface CreateSupplierUseCaseRequest {
     name: string;
@@ -10,9 +11,13 @@ interface CreateSupplierUseCaseRequest {
 
 export class CreateSupplier {
 
-    execute({ name, email, deliveryTime, address, phone }: CreateSupplierUseCaseRequest) {
+    constructor(private supplierRepository: SupplierRepository) { }
+
+    async execute({ name, email, deliveryTime, address, phone }: CreateSupplierUseCaseRequest) {
 
         const supplier = new Supplier({name, email, deliveryTime, address, phone});
+
+        await this.supplierRepository.create(supplier);
 
         return supplier;
     }

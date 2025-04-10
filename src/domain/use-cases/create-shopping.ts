@@ -1,4 +1,5 @@
 import { Shopping } from "../entities/shopping";
+import { ShoppingRepository } from "../repositories/shopping-repository";
 
 interface CreateShoppingUseCaseRequest {
     productId: string;
@@ -11,9 +12,13 @@ interface CreateShoppingUseCaseRequest {
 
 export class CreateShopping {
 
-    execute({ productId, quantity, date, priceUnit, priceTotal, supplierId }: CreateShoppingUseCaseRequest) {
+    constructor(private shoppingRepository: ShoppingRepository) { }
+
+   async execute({ productId, quantity, date, priceUnit, priceTotal, supplierId }: CreateShoppingUseCaseRequest) {
 
         const shopping = new Shopping({productId, quantity, date, priceUnit, priceTotal, supplierId});
+
+        await this.shoppingRepository.create(shopping);
 
         return shopping;
     }
