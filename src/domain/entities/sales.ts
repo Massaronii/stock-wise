@@ -1,13 +1,13 @@
-import { Entity } from "../../core/entities/entity";
-import { Optional } from "../../core/entities/types/optional";
-import { UniqueEntityId } from "../../core/entities/unique-entity-id";
+import { Entity } from "@/core/entities/entity";
+import { Optional } from "@/core/entities/types/optional";
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 interface SalesProps {
     productId: UniqueEntityId;
     quantity: number;
     date: Date;
-    priceTotal: number;
-    priceUnit: number;
+    totalPrice: number;
+    unitPrice: number;
     createdAt: Date;
     updatedAt?: Date;
 }
@@ -24,14 +24,14 @@ export class Sales extends Entity<SalesProps> {
 
     get date() {
         return this.props.date;
-    }   
+    }
 
     get priceTotal() {
-        return this.props.priceTotal;
+        return this.props.totalPrice;
     }
 
     get priceUnit() {
-        return this.props.priceUnit;
+        return this.props.unitPrice;
     }
 
     get createdAt() {

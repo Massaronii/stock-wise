@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { CreateShopping } from "./create-shopping";
 import { ShoppingRepository } from "../repositories/shopping-repository";
 import { Shopping } from "../entities/shopping";
@@ -19,8 +18,8 @@ describe("CreateShopping", () => {
             productId: "product id",
             quantity: 1,
             date: new Date(),
-            priceUnit: 10,
-            priceTotal: 100,
+            totalPrice: 10,
+            unitPrice: 100,
             supplierId: "supplier id"
         });
 

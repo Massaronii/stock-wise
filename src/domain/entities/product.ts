@@ -1,6 +1,6 @@
-import { Entity } from "../../core/entities/entity";
-import { Optional } from "../../core/entities/types/optional";
-import { UniqueEntityId } from "../../core/entities/unique-entity-id";
+import { Entity } from "@/core/entities/entity";
+import { Optional } from "@/core/entities/types/optional";
+import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 
 interface ProductProps {
     name: string;
@@ -8,6 +8,8 @@ interface ProductProps {
     size: string;
     color: string;
     category: string;
+    costPrice: number;
+    salePrice: number;
     createdAt: Date;
     updatedAt?: Date;
 }
@@ -39,6 +41,28 @@ export class Product extends Entity<ProductProps> {
 
     get updatedAt() {
         return this.props.updatedAt;
+    }
+
+    get costPrice() {
+        return this.props.costPrice;
+    }
+
+    get salePrice() {
+        return this.props.salePrice;
+    }
+
+    setCostPrice(costPrice: number) {
+        this.props.costPrice = costPrice;
+        this.touch();
+    }
+
+    setSalePrice(salePrice: number) {
+        this.props.salePrice = salePrice;
+        this.touch();
+    }
+
+    private touch(){
+        this.props.updatedAt = new Date();
     }
 
     static create(props: Optional<ProductProps, 'createdAt'>, id?: UniqueEntityId) {

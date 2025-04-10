@@ -6,8 +6,8 @@ interface CreateSalesUseCaseRequest {
     productId: string;
     quantity: number;
     date: Date;
-    priceTotal: number;
-    priceUnit: number;
+    totalPrice: number;
+    unitPrice: number;
 
 }
 
@@ -15,9 +15,9 @@ export class CreateSales {
 
     constructor(private salesRepository: SalesRepository) { }
 
-    async execute({ productId, quantity, date, priceTotal, priceUnit }: CreateSalesUseCaseRequest) {
+    async execute({ productId, quantity, date, totalPrice, unitPrice }: CreateSalesUseCaseRequest) {
 
-        const sales = Sales.create({ productId: new UniqueEntityId(productId), quantity, date, priceTotal, priceUnit });
+        const sales = Sales.create({ productId: new UniqueEntityId(productId), quantity, date, totalPrice, unitPrice });
 
         await this.salesRepository.create(sales);
 

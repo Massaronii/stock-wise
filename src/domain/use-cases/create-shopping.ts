@@ -6,8 +6,8 @@ interface CreateShoppingUseCaseRequest {
     productId: string;
     quantity: number;
     date: Date;
-    priceUnit: number;
-    priceTotal: number;
+    totalPrice: number;
+    unitPrice: number;
     supplierId: string;
 }
 
@@ -15,9 +15,15 @@ export class CreateShopping {
 
     constructor(private shoppingRepository: ShoppingRepository) { }
 
-   async execute({ productId, quantity, date, priceUnit, priceTotal, supplierId }: CreateShoppingUseCaseRequest) {
+    async execute({ productId, quantity, date, totalPrice, unitPrice, supplierId }: CreateShoppingUseCaseRequest) {
 
-        const shopping = Shopping.create({ productId: new UniqueEntityId(productId), quantity, date, priceUnit, priceTotal, supplierId: new UniqueEntityId(supplierId) });
+        const shopping = Shopping.create(
+            {
+                productId: new UniqueEntityId(productId),
+                quantity, date,
+                unitPrice, totalPrice,
+                supplierId: new UniqueEntityId(supplierId)
+            });
 
         await this.shoppingRepository.create(shopping);
 

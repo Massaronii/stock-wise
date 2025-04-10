@@ -7,20 +7,24 @@ interface CreateProductUseCaseRequest {
     size: string;
     color: string;
     category: string;
+    costPrice: number;
+    salePrice: number;
 }
 
 export class CreateProduct {
 
     constructor(private productRepository: ProductRepository) {}
 
-    async execute({ name, description, size, color, category }: CreateProductUseCaseRequest) {
+    async execute({ name, description, size, color, category, costPrice, salePrice }: CreateProductUseCaseRequest) {
 
         const product = Product.create({
             name,
             description,
             size,
             color,            
-            category
+            category,
+            costPrice,
+            salePrice
         })
 
         await this.productRepository.create(product);

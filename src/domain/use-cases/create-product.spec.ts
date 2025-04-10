@@ -1,6 +1,5 @@
 import { CreateProduct } from "./create-product";
 import { Product } from "../entities/product";
-import { describe, expect, it } from "vitest";
 import { ProductRepository } from "../repositories/product-repository";
 
 const productRepository: ProductRepository = {
@@ -20,7 +19,9 @@ describe("CreateProduct", () => {
             description: "product description",
             size: "product size",
             color: "product color",
-            category: "product category"
+            category: "product category",
+            costPrice: 10,
+            salePrice: 100
         });
 
         expect(product.name).toEqual('product name');
