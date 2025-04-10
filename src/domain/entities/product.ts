@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { Entity } from "../../core/entities/entity";
 
 
 interface ProductProps {
@@ -8,20 +8,26 @@ interface ProductProps {
     color: string;
     category: string;
 }
-export class Product {
-    public id: string;
-    public name: string;
-    public description: string;
-    public size: string;
-    public color: string;
-    public category: string;
+export class Product extends Entity<ProductProps> {
 
-    constructor(props: ProductProps, id?: string) {
-        this.id = id ?? randomUUID();
-        this.name = props.name;
-        this.description = props.description;
-        this.size = props.size;
-        this.color = props.color;
-        this.category = props.category;
+    get name() {
+        return this.props.name;
     }
+
+    get description() {
+        return this.props.description;
+    }
+
+    get size() {
+        return this.props.size;
+    }
+
+    get color() {
+        return this.props.color;
+    }
+
+    get category() {
+        return this.props.category;
+    }
+
 }
