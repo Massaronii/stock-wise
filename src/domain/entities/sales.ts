@@ -1,11 +1,15 @@
 import { Entity } from "../../core/entities/entity";
+import { Optional } from "../../core/entities/types/optional";
+import { UniqueEntityId } from "../../core/entities/unique-entity-id";
 
 interface SalesProps {
-    productId: string;
+    productId: UniqueEntityId;
     quantity: number;
     date: Date;
     priceTotal: number;
     priceUnit: number;
+    createdAt: Date;
+    updatedAt?: Date;
 }
 
 export class Sales extends Entity<SalesProps> {
@@ -28,5 +32,22 @@ export class Sales extends Entity<SalesProps> {
 
     get priceUnit() {
         return this.props.priceUnit;
+    }
+
+    get createdAt() {
+        return this.props.createdAt;
+    }
+
+    get updatedAt() {
+        return this.props.updatedAt;
+    }
+
+    static create(props: Optional<SalesProps, 'createdAt'>, id?: UniqueEntityId) {
+        const sales = new Sales({
+            ...props,
+            createdAt: new Date(),
+        }, id);
+
+        return sales;
     }
 }

@@ -15,7 +15,13 @@ export class CreateProduct {
 
     async execute({ name, description, size, color, category }: CreateProductUseCaseRequest) {
 
-        const product = new Product({name, description, size, color, category});
+        const product = Product.create({
+            name,
+            description,
+            size,
+            color,            
+            category
+        })
 
         await this.productRepository.create(product);
 

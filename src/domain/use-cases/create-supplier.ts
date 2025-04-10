@@ -15,7 +15,7 @@ export class CreateSupplier {
 
     async execute({ name, email, deliveryTime, address, phone }: CreateSupplierUseCaseRequest) {
 
-        const supplier = new Supplier({name, email, deliveryTime, address, phone});
+        const supplier = Supplier.create({name, email, deliveryTime, address, phone});
 
         await this.supplierRepository.create(supplier);
 

@@ -1,3 +1,4 @@
+import { UniqueEntityId } from "../../core/entities/unique-entity-id";
 import { Sales } from "../entities/sales";
 import { SalesRepository } from "../repositories/sales-repository";
 
@@ -7,6 +8,7 @@ interface CreateSalesUseCaseRequest {
     date: Date;
     priceTotal: number;
     priceUnit: number;
+
 }
 
 export class CreateSales {
@@ -15,7 +17,7 @@ export class CreateSales {
 
     async execute({ productId, quantity, date, priceTotal, priceUnit }: CreateSalesUseCaseRequest) {
 
-        const sales = new Sales({ productId, quantity, date, priceTotal, priceUnit });
+        const sales = Sales.create({ productId: new UniqueEntityId(productId), quantity, date, priceTotal, priceUnit });
 
         await this.salesRepository.create(sales);
 

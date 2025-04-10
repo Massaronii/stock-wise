@@ -1,3 +1,4 @@
+import { UniqueEntityId } from "../../core/entities/unique-entity-id";
 import { Stock } from "../entities/stock";
 import { StockRepository } from "../repositories/stock-repository";
 
@@ -13,7 +14,7 @@ export class CreateStock {
 
    async  execute({ productId, actualyQuantity, minimumQuantity }: CreateStockUseCaseRequest) {
 
-        const stock = new Stock({productId, actualyQuantity, minimumQuantity});
+        const stock = Stock.create({productId: new UniqueEntityId(productId), actualyQuantity, minimumQuantity});
 
         await this.stockRepository.create(stock);
 

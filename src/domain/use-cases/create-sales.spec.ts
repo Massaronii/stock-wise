@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CreateSales } from "./create-sales";
 import { Sales } from "../entities/sales";
 import { SalesRepository } from "../repositories/sales-repository";
+import { UniqueEntityId } from "../../core/entities/unique-entity-id";
 
 const salesRepository: SalesRepository = {
     create: async (sales: Sales) => {
@@ -14,7 +15,7 @@ describe("CreateSales", () => {
         const createSales = new CreateSales(salesRepository);
 
         const sales = await createSales.execute({
-            productId: "product id",
+            productId:"product id",
             quantity: 1,
             date: new Date(),
             priceTotal: 100,
